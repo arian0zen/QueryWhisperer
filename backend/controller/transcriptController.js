@@ -3,7 +3,7 @@ const getTranscriptResponse = require("../api/getTranscript");
 
 
 const getTranscript = async (req, res)=>{
-    const url = req.body.url || "https://www.youtube.com/shorts/QXNtncuomu8";
+    const url = req.body.url || "https://www.youtube.com/shorts/SeUYzglrVjs";
     const mp3 = "audio-output.mp3";
     const transcriptData = await getTranscriptResponse(url, mp3);
     if(transcriptData.newFileCreated === true){
