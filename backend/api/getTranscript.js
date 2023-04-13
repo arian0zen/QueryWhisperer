@@ -10,7 +10,11 @@ const getTranscriptResponse = async (url, mp3) => {
       return { success: true, newFileCreated: false, transcriptText: foundVideo.transcript };
     } else {
       const info = await ytdl.getInfo(url);
-      const video = ytdl(url, { filter: "audioonly" });
+      if(info.videoDetails.lengthSeconds > 1380){
+        return { success: false,  newFileCreated: false, error: "Video is greater than expected, try smaller videos" };
+      }
+      const headerText = `The title is: ${info.videoDetails.title} and the text is: `
+      const video = ytdl(url, {quality: "lowestaudio"}, { filter: "audioonly" });
       const writeStream = fs.createWriteStream(mp3);
       video.pipe(writeStream);
       const fileCreationPromise = new Promise((resolve) => {
@@ -19,11 +23,14 @@ const getTranscriptResponse = async (url, mp3) => {
         });
       });
       await fileCreationPromise;
-      const transcriptText = await openAiWhisper(url, mp3);
-      return { success: true, newFileCreated: true, transcriptText: transcriptText.data.text };
+
+      const transcriptText = await openAiWhisper(url, mp3, headerText);
+      if(transcriptText.error){
+        return { success: false,  newFileCreated: false, error: transcriptText.error };
+      }
+      return { success: true, newFileCreated: true, transcriptText: transcriptText.resp, mongoId: transcriptText.createdMongoId };
     }
   } catch (error) {
-    console.log("error", error.message);
     return { success: false,  newFileCreated: false, error: error.message };
   }
 };
