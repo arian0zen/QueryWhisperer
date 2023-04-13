@@ -1,7 +1,6 @@
 require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
 const fs = require("fs");
-const fetch = require("node-fetch");
 const Transcripts = require("../models/Transcripts");
 
 const configuration = new Configuration({
@@ -32,7 +31,22 @@ const openAiWhisper = async (url, mp3File, headerText) => {
     const transcriptText = `${headerText} ${resp.data.text}`;
 
     /* --- this block of code is to execute when I am generating transcript for that demo video, i already have the mp3 chunks at 'demo-mp3' folder --- */
-    // const getTranscript = async (outPutDirectory) => {
+      /* < I would insert the below commented code here > */
+
+
+    const createdMongoInstance = await Transcripts.create({
+      videoUrl: url,
+      transcript: transcriptText,
+    });
+    return { resp: transcriptText, createdMongoId: createdMongoInstance._id };
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports = openAiWhisper;
+
+  // const getTranscript = async (outPutDirectory) => {
     //   return new Promise(async (resolve, reject) => {
     //     try {
     //       const files = await fs.promises.readdir(outPutDirectory);
@@ -81,14 +95,3 @@ const openAiWhisper = async (url, mp3File, headerText) => {
     //     }
     //   }
     // );
-    const createdMongoInstance = await Transcripts.create({
-      videoUrl: url,
-      transcript: transcriptText,
-    });
-    return { resp: transcriptText, createdMongoId: createdMongoInstance._id };
-  } catch (err) {
-    return err;
-  }
-};
-
-module.exports = openAiWhisper;

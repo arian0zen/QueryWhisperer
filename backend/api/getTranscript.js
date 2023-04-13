@@ -11,7 +11,7 @@ const getTranscriptResponse = async (url, mp3) => {
     } else {
       const info = await ytdl.getInfo(url);
       if(info.videoDetails.lengthSeconds > 1380){
-        return { success: false,  newFileCreated: false, error: "Video is greater than expected, try smaller videos" };
+        return { success: false,  newFileCreated: false, error: "Video is larger than expected, try smaller videos" };
       }
       const headerText = `The title is: ${info.videoDetails.title} and the text is: `
       const video = ytdl(url, {quality: "lowestaudio"}, { filter: "audioonly" });
