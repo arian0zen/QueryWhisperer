@@ -1,3 +1,60 @@
-node_modules
+
 demo-mp3
+# .ignore
+
+# Node.js dependencies
+node_modules/
+
+# Build artifacts
+build/
+dist/
+*.log
+
+# Environment variables
 .env
+.env.*
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.swn
+
+# Log files
+*.log
+logs/
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+
+# Test and coverage files
+coverage/
+__tests__/
+*.test.js
+
+# Configuration files
+*.config.js
+*.config.json
+
+# Compiled code
+*.js
+*.js.map
+*.d.ts
+
+# Other build artifacts
+*.min.js
+*.min.css
+
+# Database files
+*.db
+*.sqlite
+*.db.sqlite
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
