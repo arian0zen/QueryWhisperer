@@ -1,0 +1,23 @@
+.go-home-btn{
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: var(--call-to-action);
+    color: var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: all 0.5s ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--text-usual);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.go-home-btn:hover{
+    color: var(--dark-color);
+    transform: scale(0.9);
+    transition: all 0.5s ;
+}

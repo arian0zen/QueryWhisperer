@@ -1,0 +1,133 @@
+.upload-component{
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+
+.upload-component-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.upload-component-content p{
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--modern);
+}
+.upload-component-content small {
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--modern);
+    color: rgb(250, 183, 0);
+}
+.upload-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0 2rem 0;
+}
+.upload-form input{
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-family: var(--modern);
+    font-size: 1rem;
+    transition: all 0.5s;
+}
+.upload-form input:focus{
+    outline: none;
+    border: 1px solid var(--dark-color);
+    transition: all 0.5s;
+}
+.upload-form button{
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: var(--call-to-action);
+    color: var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: all 0.5s ;
+    border: none;
+    font-family: var(--modern);
+    font-size: 1rem;
+    outline: none;
+}
+.upload-form button:hover{
+    color: var(--dark-color);
+    transform: scale(0.9);
+    transition: all 0.5s ;
+}
+.upload-form button:active{
+    transform: scale(1.5);
+    transition: all 0.5s ;
+}
+.form-error{
+    background-color: rgba(238, 141, 141, 0.664) !important;
+}
+.error-message, .loading-message, .success-message{
+    color: var(--error-color);
+    font-size: 0.9rem;
+    font-family: var(--modern);
+    font-weight: 400;
+    margin: 0.5rem 3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: rgba(238, 141, 141, 0.664);
+    text-align: center;
+}
+
+.success-message{
+    color: var(--primary-color);
+    background-color: rgba(45, 190, 45, 0.664);
+}
+.loading-message{
+    color: var(--primary-color);
+    background-color: rgba(93, 93, 241, 0.664);
+}
+
+.go-back-btn{
+    width: fit-content;
+    margin-left: auto;
+}
+
+.loading{
+    width: 50px;
+}
+.loading-message{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .upload-component{
+        padding: 0.5rem;
+    }
+    .upload-component-content p{
+        font-size: 1.2rem;
+    }
+    .upload-component-content small {
+        font-size: 0.8rem;
+    }
+    .upload-form{
+        flex-direction: column;
+    }
+    .upload-form input{
+        width: 100%;
+    }
+    .upload-form button{
+        width: 100%;
+    }
+    .error-message, .success-message, .loading-message{
+        margin: 0.5rem 0;
+    }
+}

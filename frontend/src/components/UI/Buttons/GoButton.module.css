@@ -1,0 +1,23 @@
+.go-button{
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    border-radius: 60%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: all 0.5s ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.go-button:hover{
+    transform: scale(0.9);
+    transition: all 0.5s ;
+}
+.go-button img{
+    width: 40px;
+    transition: all 0.5s;
+}
+.go-button img:hover{
+    transform: scale(1.5);
+    transition: all 0.5s ;
+}

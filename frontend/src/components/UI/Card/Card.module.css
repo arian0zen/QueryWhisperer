@@ -1,0 +1,14 @@
+.card{
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    margin: 2rem auto;
+    width: 80%;
+    padding: 1rem;
+    position: relative;
+}
+
+@media screen and (max-width: 768px) {
+    .card{
+        width: 90%;
+    }
+}

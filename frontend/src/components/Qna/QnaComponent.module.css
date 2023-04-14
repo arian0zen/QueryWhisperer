@@ -1,0 +1,161 @@
+.qna-component {
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.qna-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0rem;
+}
+.qna-form textarea {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-family: var(--modern);
+  font-size: 1rem;
+  transition: all 0.5s;
+  width: 100%;
+  resize: vertical;
+}
+
+.qna-form textarea:focus {
+  outline: none;
+  border: 1px solid var(--dark-color);
+  transition: all 0.5s;
+}
+
+.qna-form button {
+  cursor: pointer;
+  padding: 1.7rem 1rem;
+  background-color: var(--call-to-action);
+  color: var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s;
+  border: none;
+  font-family: var(--modern);
+  font-size: 1rem;
+  outline: none;
+}
+.qna-form button:hover {
+  color: var(--dark-color);
+  transform: scale(0.9);
+  transition: all 0.5s;
+}
+.qna-form button:active {
+  transform: scale(1.5);
+  transition: all 0.5s;
+}
+
+.form-error {
+  background-color: rgba(238, 141, 141, 0.664);
+}
+.error-message,
+.loading-message {
+  color: var(--error-color);
+  font-size: 0.9rem;
+  font-family: var(--modern);
+  font-weight: 400;
+  margin: 0.5rem 3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: rgba(238, 141, 141, 0.664);
+  text-align: center;
+}
+
+.loading-message {
+  color: var(--primary-color);
+  background-color: rgba(93, 93, 241, 0.664);
+}
+
+.go-back-btn {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.loading {
+  width: 50px;
+}
+.loading-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.go-back-btn {
+  width: fit-content;
+  margin-left: auto;
+}
+
+/* chat stytling */
+.chat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+.chat-human,
+.chat-bot {
+  align-self: flex-end;
+  background-color: #408e91;
+  color: var(--primary-color);
+  gap: 1rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 10px 0 10px 10px;
+  font-size: 1.1rem;
+  font-family: var(--modern);
+  max-width: 80%;
+  max-height: fit-content;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.chat-bot {
+  align-self: flex-start;
+  background-color: var(--call-to-action);
+  border-radius: 0 10px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chat-bot img {
+  height: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .qna-component {
+    width: 100%;
+  }
+  .qna-form {
+    flex-direction: column;
+  }
+  .qna-form textarea {
+    width: 100%;
+  }
+  .qna-form button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+  .error-message,
+  .loading-message {
+    margin: 0.5rem 0;
+  }
+  .chat-bot,
+  .chat-human {
+    font-size: 0.9rem;
+  }
+}

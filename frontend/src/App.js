@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-
+import NavBar from './components/UI/Nav/Nav';
+import HomeComponent from './components/Home/HomePage';
+import UploadComponent from './components/Upload/UploadComponent';
+import QnaComponent from './components/Qna/QnaComponent';
 function App() {
+  const [isUploadPage, setIsUploadPage] = useState(null);
+  const [isQnaPage, setIsQnaPage] = useState(null);
+
+  const teachItButtonHandler = ()=>{
+    if(isUploadPage){
+      setIsUploadPage(false);
+    }else{
+      setIsUploadPage(true);
+    }
+  }
+  const askItButtonHandler = ()=>{
+    if(isQnaPage){
+      setIsQnaPage(false);
+    }else{
+      setIsQnaPage(true);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <NavBar onTeachIt={teachItButtonHandler} onAskIt={askItButtonHandler}></NavBar>
+      {
+        isUploadPage ? (
+          <UploadComponent onGoBack={teachItButtonHandler}></UploadComponent>
+        ) : isQnaPage ? (
+          <QnaComponent onGoBack={askItButtonHandler}></QnaComponent>
+        ) : (
+          <HomeComponent onTeachIt={teachItButtonHandler} onAskIt={askItButtonHandler}></HomeComponent>
+        )
+      }
+      
     </div>
   );
 }
 
 export default App;
+
+// isUploadPage ? (
+//   <UploadComponent onGoBack={teachItButtonHandler}></UploadComponent>
+// ) : isQnaPage ? (
+//   <QnaComponent onGoBack={askItButtonHandler}></QnaComponent>
+// ) : (
+//   <HomeComponent onTeachIt={teachItButtonHandler} onAskIt={askItButtonHandler}></HomeComponent>
+// )
