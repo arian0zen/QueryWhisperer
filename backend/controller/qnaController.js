@@ -25,13 +25,13 @@ try{
   const docSearch = await PineconeStore.fromExistingIndex(embeddings, {
     pineconeIndex,
   });
-  const query = req.body.query || "how to boost immune system ?";
+  const query = req.body.query || "Why was Donald Trump arrested ?";
 
   const searchResults = await docSearch.similaritySearch(query, 5);
 
   const llm = new OpenAI({
-    temperature: 0,
-    openAIApiKey: process.env.OPENAI_API_KEY,
+    temperature: 0.7,
+    openAIApiKey: OPENAI_API_KEY,
   });
 
   const chain = loadQAStuffChain(llm);
@@ -41,7 +41,7 @@ try{
   });
   res.json(responseAns);
 }catch(errors){
-  res.json({error: errors});
+  res.json({error: "well, this is awkward.. I don't know the answer"});
 }
 };
 

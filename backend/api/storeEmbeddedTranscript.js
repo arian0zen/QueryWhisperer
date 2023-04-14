@@ -1,4 +1,4 @@
-const fs = require("fs");
+
 require("dotenv").config();
 const { TextLoader } = require("langchain/document_loaders/fs/text");
 const { RecursiveCharacterTextSplitter } = require("langchain/text_splitter");
@@ -14,7 +14,7 @@ const storeEmbedded = async (textFile) => {
         const documents = await loader.load();
         const textSplitter = new RecursiveCharacterTextSplitter({
           chunk_size: 1000,
-          chunk_overlap: 0,
+          chunk_overlap: 10,
         });
         const texts = await textSplitter.splitDocuments(documents);
       
@@ -26,7 +26,7 @@ const storeEmbedded = async (textFile) => {
           environment: PINECONE_API_ENV,
           apiKey: PINECONE_API_KEY,
         });
-        const index_name = "transcript-yt";
+        const index_name = process.env.PINECONE_INDEX_NAME;
         const pineconeIndex = client.Index(index_name);
         await PineconeStore.fromDocuments(texts, embeddings, {
           pineconeIndex,

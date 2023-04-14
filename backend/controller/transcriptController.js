@@ -4,7 +4,7 @@ const storeEmbeddedTranscript = require("../api/storeEmbeddedTranscript");
 
 const getTranscript = async (req, res) => {
   const url =
-    req.body.url || "https://www.youtube.com/watch?v=2m2520TuUdk";
+    req.body.url || "https://www.youtube.com/watch?v=8WbTacWuxn0";
   const mp3 = "audio-output.mp3";
     try{
         const transcriptData = await getTranscriptResponse(url, mp3);
