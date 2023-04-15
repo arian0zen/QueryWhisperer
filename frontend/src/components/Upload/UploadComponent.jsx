@@ -36,7 +36,7 @@ const UploadComponent = (props) => {
       setError(null);
       setSuccess(null);
       const response = await axios.post(
-        "/api/transcript",
+        "https://transcript-generation-ft-ai.vercel.app/api/transcript",
         {
           url: enteredLink,
         }

@@ -28,7 +28,7 @@ const QnaComponent = (props) => {
       setLoading(true);
       setAnswer(null);
       setError(null);
-      const response = await axios.post("/api/qna", {
+      const response = await axios.post("https://transcript-generation-ft-ai.vercel.app/api/qna", {
         query: question,
       });
       setLoading(false);
