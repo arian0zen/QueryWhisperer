@@ -26,9 +26,9 @@ const UploadComponent = (props) => {
     const enteredLink = linkRef.current.value;
     if (
       enteredLink.trim().length === 0 ||
-      !enteredLink.includes("youtube.com")
+      (!enteredLink.includes("youtube.com") && !enteredLink.includes("youtu.be"))
     ) {
-      setError("Please enter valid youtube url");
+      setError("Please enter a valid YouTube URL");
       return;
     }
     try {
