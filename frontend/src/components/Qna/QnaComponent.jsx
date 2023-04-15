@@ -42,7 +42,7 @@ const QnaComponent = (props) => {
       setLoading(false);
       if (response.data.error) {
         setError(
-          "Ohh hoo! Probably my OpenAI trial is over, hey! would you sponsor me ? 🥺"
+          "Ohh hoo! Probably my OpenAI trial is over, hey! would you sponsor me ? 🙌"
         );
         return;
       } else {
