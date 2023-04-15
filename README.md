@@ -1,4 +1,4 @@
-# Transcript Generation with AI
+# QueryWhisperer - Transcript Generation with AI
 
 This is a MERN (MongoDB, Express, React, Node.js) application that utilizes the power of artificial intelligence to generate transcripts from YouTube videos. The application uses a combination of technologies including OpenAI, LangChain, and Pinecone to provide an accurate and efficient question-answering system.
 
