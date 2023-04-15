@@ -36,7 +36,7 @@ const UploadComponent = (props) => {
       setError(null);
       setSuccess(null);
       const response = await axios.post(
-        "http://localhost:5000/api/transcript",
+        "/api/transcript",
         {
           url: enteredLink,
         }

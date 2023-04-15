@@ -28,7 +28,7 @@ const QnaComponent = (props) => {
       setLoading(true);
       setAnswer(null);
       setError(null);
-      const response = await axios.post("http://localhost:5000/api/qna", {
+      const response = await axios.post("/api/qna", {
         query: question,
       });
       setLoading(false);
