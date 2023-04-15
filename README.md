@@ -1,4 +1,4 @@
-# Transcript Generation with AI
+# QueryWhisperer - Transcript Generation with AI
 
 This is a MERN (MongoDB, Express, React, Node.js) application that utilizes the power of artificial intelligence to generate transcripts from YouTube videos. The application uses a combination of technologies including OpenAI, LangChain, and Pinecone to provide an accurate and efficient question-answering system.
 
@@ -25,7 +25,9 @@ This is a MERN (MongoDB, Express, React, Node.js) application that utilizes the 
 
 ## User Interface and Workflow
 
-The user goes to the application's website and inputs a YouTube video link. After a few moments, the application generates the text transcript for the video using the steps mentioned in the Application Workflow. The user can then ask the application any questions about the video, and the AI-powered question-answering system will provide accurate answers based on the generated transcripts. The application is designed to be useful for extracting information from informative videos and can potentially support other formats, such as PDFs, in the future.
+- The user goes to the application's website and inputs a YouTube video link. After a few moments, the application generates the text transcript for the video using the steps mentioned in the Application Workflow.
+- The user can then ask the application any questions about the video, and the AI-powered question-answering system will provide accurate answers based on the generated transcripts.
+- The application is designed to be useful for extracting information from informative videos and can potentially support other formats, such as PDFs, in the future.
 
 ## Technologies Used
 
@@ -99,3 +101,5 @@ _________________
 ## Conclusion
 
 This application provides an efficient way to generate text transcripts from YouTube videos and extract information through a question-answering system powered by AI. With further enhancements, such as support for PDFs and other formats, this application has the potential to be a valuable tool for extracting information from various multimedia sources.
+_________________
+- Three of my OpenAI account's $5 free trial has been reached out, someone please sponsor me. 😭😭🥺
