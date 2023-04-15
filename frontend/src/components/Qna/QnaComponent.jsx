@@ -4,6 +4,7 @@ import Card from "../UI/Card/Card";
 import classes from "./QnaComponent.module.css";
 import GoHomeButton from "../UI/Buttons/GoHome";
 import typingRed from "../../assets/typing-red.gif";
+import loadingGif from "../../assets/loading-crop.gif";
 
 const QnaComponent = (props) => {
   const [Error, setError] = useState(null);
@@ -90,6 +91,7 @@ const QnaComponent = (props) => {
         {Error && <p className={classes["error-message"]}>{Error}</p>}
         {Loading && (
           <div className={classes["loading-message"]}>
+            <img className={classes["loading"]} src={loadingGif} alt="loading" />
             Loading... Please wait, this may take a while
           </div>
         )}

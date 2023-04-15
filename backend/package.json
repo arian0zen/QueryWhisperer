@@ -23,7 +23,6 @@
     "mongoose": "^7.0.3",
     "node-fetch": "^2.6.9",
     "openai": "^3.2.1",
-    "react-icons": "^4.8.0",
     "ytdl-core": "^4.9.1"
   }
 }
