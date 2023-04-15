@@ -1,4 +1,4 @@
-const fs = require("fs");
+require('core-js/features/string/replace-all');
 require("dotenv").config();
 const { PineconeStore } = require("langchain/vectorstores/pinecone");
 const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
