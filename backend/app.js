@@ -5,13 +5,13 @@ const app = express();
 const connectDB = require("./config/connectDB");
 const transScriptRouter = require("./routes/transScriptRouter");
 
-const conrsOptions = {
-  origin: 'https://transcript-generation-ft-ai-react.vercel.app',
-   // Specify the allowed origin
-  methods: 'GET, POST, PUT, DELETE', // Specify the allowed HTTP methods
-  allowedHeaders: 'Content-Type, Authorization', // Specify the allowed headers
-};
-app.use(cors(conrsOptions));
+// const conrsOptions = {
+//   origin: 'https://transcript-generation-ft-ai-react.vercel.app',
+//    // Specify the allowed origin
+//   methods: 'GET, POST, PUT, DELETE', // Specify the allowed HTTP methods
+//   allowedHeaders: 'Content-Type, Authorization', // Specify the allowed headers
+// };
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
