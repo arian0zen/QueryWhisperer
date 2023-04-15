@@ -71,6 +71,30 @@ Note: For testing and development purposes, you can use YouTube shorts or other 
 
 ` though, first and foremost there are lots of improvement scopes in terms of code quality, specially in jsx components, we should fix those first, thank you `
 
+## Contribution
+
+I welcome contributions to improve and enhance the functionality of this application. If you would like to contribute, please follow these steps:
+
+1. Fork the repository to your own GitHub account, (prefereably the `locale` branch).
+2. Clone the forked repository to your local machine.
+3. Create a new branch for your contribution.
+4. Make your changes and test them locally.
+5. Commit your changes with clear and descriptive commit messages.
+6. Push your changes to your forked repository.
+7. Submit a pull request to the main repository with a detailed description of your changes.
+
+Please ensure that your contributions adhere to the following guidelines:
+
+- Follow the coding style and best practices used in the project.
+- Provide clear and concise documentation for any new features or changes.
+- Test your changes thoroughly to ensure they do not introduce any new bugs.
+- Be responsive to feedback and be willing to make changes as needed.
+
+
+Thank you for your contributions in advance! Together, we can make this application even better.
+_________________
+- finding bugs is most prioritized contribution for now :)
+
 
 ## Conclusion
 
