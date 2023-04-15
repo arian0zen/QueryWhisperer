@@ -5,7 +5,7 @@ const storeEmbeddedTranscript = require("../api/storeEmbeddedTranscript");
 const getTranscript = async (req, res) => {
   const url =
     req.body.url
-  const mp3 = "/tmp/audio-output.mp3";
+  const mp3 = "audio-output.mp3";
     try{
         const transcriptData = await getTranscriptResponse(url, mp3);
         if (transcriptData.newFileCreated === true) {
@@ -16,7 +16,7 @@ const getTranscript = async (req, res) => {
             }
           });
           fs.writeFile(
-            `/tmp/${transcriptData.mongoId}.txt`,
+            `./Documents/${transcriptData.mongoId}.txt`,
             transcriptData.transcriptText,
             (err) => {
               if (err) {
@@ -26,11 +26,11 @@ const getTranscript = async (req, res) => {
             }
           );
           await storeEmbeddedTranscript(
-            `/tmp/${transcriptData.mongoId}.txt`
+            `./Documents/${transcriptData.mongoId}.txt`
           );
         }
         if (transcriptData.success === true) {
-            fs.unlink(`/tmp/${transcriptData.mongoId}.txt`, (err) => {
+            fs.unlink(`./Documents/${transcriptData.mongoId}.txt`, (err) => {
                 if (err) {
                   return;
                 }
