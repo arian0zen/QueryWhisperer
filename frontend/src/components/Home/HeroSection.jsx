@@ -11,11 +11,7 @@ const HeroSectionComponent = (props) => {
               <span>let it teach you !!</span>
             </div>
             <div className={classes["content-desc"]}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-              reiciendis eius eveniet temporibus velit{" "}
-              <span>enim iusto sapiente</span> culpa inventore exercitationem
-              quaerat a assumenda vel suscipit perferendis doloribus, adipisci
-              quam et.
+            Unleash the power of AI with QueryWhisperer! Get instant answers to your questions about YouTube videos. Our advanced technology generates transcripts from video audio, enabling you to easily extract valuable insights. <span>Try QueryWhisperer today</span> and elevate your video exploration to a whole new level!
             </div>
             <a href="#qna-section">
               <div className={classes["content-button"]}>try it now..</div>
