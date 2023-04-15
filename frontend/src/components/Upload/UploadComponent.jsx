@@ -35,11 +35,10 @@ const UploadComponent = (props) => {
       setLoading(true);
       setError(null);
       setSuccess(null);
+      // Set the origin header to your server's domain
       const axiosConfig = {
-        // Set the origin header to your server's domain
         headers: {
           'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
-          // Add any other headers as needed
         }
       };
       const response = await axios.post(

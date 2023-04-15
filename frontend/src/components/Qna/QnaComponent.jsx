@@ -28,11 +28,10 @@ const QnaComponent = (props) => {
       setLoading(true);
       setAnswer(null);
       setError(null);
+      // Set the origin header to your server's domain
       const axiosConfig = {
-        // Set the origin header to your server's domain
         headers: {
           'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
-          // Add any other headers as needed
         }
       };
       const response = await axios.post("https://transcript-generation-ft-ai.vercel.app/api/qna", {
