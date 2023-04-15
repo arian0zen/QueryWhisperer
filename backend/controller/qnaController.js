@@ -41,6 +41,7 @@ try{
   });
   res.json(responseAns);
 }catch(errors){
+  console.log("error", errors);
   res.json({error: "well, this is awkward.. I don't know the answer"});
 }
 };
