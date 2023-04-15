@@ -15,10 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", transScriptRouter);
-app.get('/v1', (req, res) => {
-  res.send('Hello World!')
-})
-
 port = process.env.PORT || 5000;
 (async () => {
   await connectDB(process.env.DATABASE_URI);
