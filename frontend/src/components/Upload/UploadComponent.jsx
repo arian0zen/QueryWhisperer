@@ -35,11 +35,20 @@ const UploadComponent = (props) => {
       setLoading(true);
       setError(null);
       setSuccess(null);
+      const axiosConfig = {
+        // Set the origin header to your server's domain
+        headers: {
+          'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
+          // Add any other headers as needed
+        },
+        withCredentials: true, // Enable CORS with credentials
+      };
       const response = await axios.post(
         "https://transcript-generation-ft-ai.vercel.app/api/transcript",
         {
           url: enteredLink,
-        }
+        },
+        axiosConfig
       );
       setLoading(false);
       if (response.data.error) {

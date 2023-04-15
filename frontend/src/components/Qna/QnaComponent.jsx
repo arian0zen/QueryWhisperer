@@ -28,9 +28,19 @@ const QnaComponent = (props) => {
       setLoading(true);
       setAnswer(null);
       setError(null);
+      const axiosConfig = {
+        // Set the origin header to your server's domain
+        headers: {
+          'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
+          // Add any other headers as needed
+        },
+        withCredentials: true, // Enable CORS with credentials
+      };
       const response = await axios.post("https://transcript-generation-ft-ai.vercel.app/api/qna", {
         query: question,
-      });
+      },
+      axiosConfig
+      );
       setLoading(false);
       if (response.data.error) {
         setError(
