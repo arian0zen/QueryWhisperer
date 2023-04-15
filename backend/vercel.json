@@ -1,10 +1,10 @@
 {
     "version": 2,
-    "name": "music-album",
+    "name": "teach-the-ai",
     "builds": [
-       { "src": "*.js", "use": "@vercel/node" }
+       { "src": "app.js", "use": "@vercel/node" }
     ],
     "routes": [
-       { "src": "/(.*)", "dest": "/" }
+       { "src": "/(.*)", "dest": "app.js" }
     ]
  }
