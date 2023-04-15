@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const fetch = require("node-fetch");
 const cors = require("cors");
 const app = express();
 const connectDB = require("./config/connectDB");
@@ -16,9 +17,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", transScriptRouter);
-app.get("/v1", (req, res) => {
-  res.send("Hello World!");
+app.get("/inactive", (req, res) => {
+  res.send("ok");
 });
+
+setInterval(function() {
+  // do something here
+  console.log('INTERVAL',new Date().toLocaleString());
+  fetch('https://transcript-generator-api.onrender.com/inactive')
+}, 300000)
+
+
 port = process.env.PORT || 5000;
 (async () => {
   await connectDB(process.env.DATABASE_URI);
