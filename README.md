@@ -7,13 +7,12 @@ This is a MERN (MongoDB, Express, React, Node.js) application that utilizes the 
 - Takes a YouTube video link as input and generates the video's transcript using the OpenAI "Whisper" API.
 - Stores the generated text transcript, embedded with LangChain and OpenAI, into a Pinecone vector datastore for efficient similarity search.
 - Allows users to ask questions about the video or videos that have been trained before, and the system provides accurate answers using the embedded texts.
-- Supports long videos by breaking them into smaller chunks for processing.
+- ~~Supports long videos by breaking them into smaller chunks for processing.~~ `scope for future improvement, currently you need to provide the smaller chunks inside the demo-mp3 folder and there is a commented code, you can use that `
 - Provides a user-friendly interface for easy interaction and input of YouTube video links.
 - Can be extended to support other types of documents, such as PDFs, for question-answering.
 
 ` tested with a 7.5 hours long video's audio, though i did not download the audio using this code, that would have takes days to process 🤦‍♀️`
 ` you can question about this video as well, the video is :` https://www.youtube.com/watch?v=QxU-JrfA824
-
 ## Application Workflow
 
 1. The user provides a YouTube video link through the application's user interface.
