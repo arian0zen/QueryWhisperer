@@ -36,17 +36,17 @@ const UploadComponent = (props) => {
       setError(null);
       setSuccess(null);
       // Set the origin header to your server's domain
-      const axiosConfig = {
-        headers: {
-          'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
-        }
-      };
+      // const axiosConfig = {
+      //   headers: {
+      //     'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
+      //   }
+      // };
       const response = await axios.post(
-        "https://transcript-generator-api.onrender.com/api/transcript",
+        "http://localhost:5000/api/transcript",
         {
           url: enteredLink,
         },
-        axiosConfig
+        // axiosConfig
       );
       setLoading(false);
       if (response.data.error) {
