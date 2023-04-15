@@ -7,7 +7,6 @@ const transScriptRouter = require("./routes/transScriptRouter");
 
 const conrsOptions = {
   origin: 'https://transcript-generation-ft-ai-react.vercel.app',
-  Credentials: true, // Access-Control-Allow-Credentials: true
    // Specify the allowed origin
   methods: 'GET, POST, PUT, DELETE', // Specify the allowed HTTP methods
   allowedHeaders: 'Content-Type, Authorization', // Specify the allowed headers
