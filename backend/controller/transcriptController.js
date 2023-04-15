@@ -45,6 +45,7 @@ const getTranscript = async (req, res) => {
           return;
         }
     }catch(error){
+        console.log("error",  error.message);
         res.json({error: error.message});
         return;
     }

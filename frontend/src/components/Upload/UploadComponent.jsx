@@ -42,7 +42,7 @@ const UploadComponent = (props) => {
         }
       };
       const response = await axios.post(
-        "https://transcript-generation-ft-ai.vercel.app/api/transcript",
+        "https://transcript-generator-api.onrender.com/api/transcript",
         {
           url: enteredLink,
         },
