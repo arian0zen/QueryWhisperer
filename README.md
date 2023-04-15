@@ -25,7 +25,9 @@ This is a MERN (MongoDB, Express, React, Node.js) application that utilizes the 
 
 ## User Interface and Workflow
 
-The user goes to the application's website and inputs a YouTube video link. After a few moments, the application generates the text transcript for the video using the steps mentioned in the Application Workflow. The user can then ask the application any questions about the video, and the AI-powered question-answering system will provide accurate answers based on the generated transcripts. The application is designed to be useful for extracting information from informative videos and can potentially support other formats, such as PDFs, in the future.
+- The user goes to the application's website and inputs a YouTube video link. After a few moments, the application generates the text transcript for the video using the steps mentioned in the Application Workflow.
+- The user can then ask the application any questions about the video, and the AI-powered question-answering system will provide accurate answers based on the generated transcripts.
+- The application is designed to be useful for extracting information from informative videos and can potentially support other formats, such as PDFs, in the future.
 
 ## Technologies Used
 
