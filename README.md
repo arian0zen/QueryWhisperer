@@ -11,7 +11,7 @@ This is a MERN (MongoDB, Express, React, Node.js) application that utilizes the 
 - Provides a user-friendly interface for easy interaction and input of YouTube video links.
 - Can be extended to support other types of documents, such as PDFs, for question-answering.
 
-` tested with a 7.5 hours long video's audio, though i did not download the audio using this code, that would have takes days to process 🤦‍♀️`
+` tested with a 7.5 hours long video's audio, though i did not download the audio using this code, that would have taken days to process 🤦‍♀️`
 ` you can question about this video as well, the video is :` https://www.youtube.com/watch?v=QxU-JrfA824
 ## Application Workflow
 
@@ -41,7 +41,7 @@ This is a MERN (MongoDB, Express, React, Node.js) application that utilizes the 
 ## Installation
 
 1. Clone the repository and then `npm i` in both backend and frontene.
-2. Then navigate to frontend.
+2. Then navigate to backend.
 3. Run `npm run dev` to concurrently start the client and server.
 4. Update the API URL in the frontend components `UploadComponent.jsx` and `QnaComponent.jsx` to `localhost:5000`.
 5. Update the CORS allow origin in `backend/app.js` to `"localhost:3000"`.
