@@ -5,7 +5,6 @@ const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
 const { PineconeClient } = require("@pinecone-database/pinecone");
 const { OpenAI } = require("langchain/llms/openai");
 const { loadQAStuffChain } = require("langchain/chains");
-const e = require("express");
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
 const PINECONE_API_ENV = "asia-southeast1-gcp";
@@ -41,7 +40,7 @@ try{
   });
   res.json(responseAns);
 }catch(errors){
-  console.log("error", errors);
+  // console.log("error", errors);
   res.json({error: "well, this is awkward.. I don't know the answer"});
 }
 };
