@@ -41,9 +41,9 @@ __tests__/
 *.config.json
 
 # Compiled code
-*.js
-*.js.map
-*.d.ts
+# *.js
+# *.js.map
+# *.d.ts
 
 # Other build artifacts
 *.min.js
