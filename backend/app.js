@@ -5,7 +5,6 @@ const cors = require("cors");
 const app = express();
 const connectDB = require("./config/connectDB");
 const transScriptRouter = require("./routes/transScriptRouter");
-const scrapingRouter = require("./routes/scrapingRouter");
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const corsOptions = {
   origin: 'http://localhost:3000',
@@ -30,7 +29,6 @@ app.use("/api", transScriptRouter);
 //   res.send(result);
 
 // });
-app.use("/scrape", scrapingRouter);
 
 // setInterval(function() {
 //   // do something here
