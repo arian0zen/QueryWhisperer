@@ -92,7 +92,6 @@ const recscraper = async (req, res) => {
     // console.log("hiii");
     processed_urls.add(url);
     for (let url of parsed_url) {
-        // console.log("hello " + url);
         console.log(processed_urls, "inside for loop")
         console.log(url, "inside for loop")
         console.log(processed_urls.has(url), "inside for loop")
