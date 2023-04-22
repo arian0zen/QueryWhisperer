@@ -41,6 +41,7 @@ const UploadComponent = (props) => {
       //     'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
       //   }
       // };
+      
       const response = await axios.post(
         "http://localhost:5000/api/transcript",
         {
