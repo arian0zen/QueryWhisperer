@@ -8,7 +8,6 @@ const { loadQAStuffChain } = require("langchain/chains");
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
 const PINECONE_API_ENV = "asia-southeast1-gcp";
-const garbage_extensions = "";
 
 const qna = async (req, res) => {
 try{
