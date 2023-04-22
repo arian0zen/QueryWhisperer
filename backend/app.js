@@ -22,7 +22,7 @@ app.get("/inactive", (req, res) => {
 });
 
 setInterval(function() {
-  // do something here
+  // do something here or leave it as it is
   console.log('INTERVAL',new Date().toLocaleString());
   fetch('https://transcript-generator-api.onrender.com/inactive')
 }, 300000)
