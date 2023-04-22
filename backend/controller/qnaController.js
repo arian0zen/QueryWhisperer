@@ -20,7 +20,7 @@ try{
     environment: PINECONE_API_ENV,
     apiKey: PINECONE_API_KEY,
   });
-  const index_name = "transcript-yt";
+  const index_name = process.env.PINECONE_INDEX_NAME;
   const pineconeIndex = client.Index(index_name);
   const docSearch = await PineconeStore.fromExistingIndex(embeddings, {
     pineconeIndex,
