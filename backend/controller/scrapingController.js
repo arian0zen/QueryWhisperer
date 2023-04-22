@@ -34,7 +34,7 @@ const scraping = async (req, res) => {
           await Promise.all(
             contactUrl.map(async (url) => {
               if (garbage_extensions.some(ext => url.endsWith(ext))) {
-                // console.log('Garbage extension found');
+                // console.log('Garbage extension found in url: ', url);
                 return;
               }
               const contactEmail = await webBrowser.call(
