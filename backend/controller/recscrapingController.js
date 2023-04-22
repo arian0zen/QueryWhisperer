@@ -92,14 +92,14 @@ const recscraper = async (req, res) => {
     // console.log("hiii");
     processed_urls.add(url);
     for (let url of parsed_url) {
-        console.log(processed_urls, "inside for loop")
-        console.log(url, "inside for loop")
-        console.log(processed_urls.has(url), "inside for loop")
-      if (!processed_urls.has(url)) {
-        console.log("adding " + url + " to unprocessed_urls");
+        // console.log(processed_urls, "inside for loop")
+        // console.log(url, "inside for loop")
+        // console.log(processed_urls.has(url), "inside for loop")
+      if (!processed_urls.has(url) && !/\b(services?|blogs?)\b/.test(url)) {
+        // console.log("adding " + url + " to unprocessed_urls");
         unProcessed_urls.add(url);
       } else {
-        console.log("already processed " + url);
+        // console.log("already processed " + url);
       }
     }
 
