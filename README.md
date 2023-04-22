@@ -103,3 +103,8 @@ _________________
 This application provides an efficient way to generate text transcripts from YouTube videos and extract information through a question-answering system powered by AI. With further enhancements, such as support for PDFs and other formats, this application has the potential to be a valuable tool for extracting information from various multimedia sources.
 _________________
 - Three of my OpenAI account's $5 free trial has been reached out, someone please sponsor me. 😭😭🥺
+_________________
+![image](https://user-images.githubusercontent.com/68517592/233770362-cdcd70c3-0661-437b-b5cb-a93389d24558.png)
+![image](https://user-images.githubusercontent.com/68517592/233770402-1e8caeae-00b8-42e0-a310-6dcd6a694e90.png)
+
+
