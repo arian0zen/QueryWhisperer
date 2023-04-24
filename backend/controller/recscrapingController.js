@@ -4,9 +4,10 @@ const { ChatOpenAI } = require("langchain/chat_models/openai");
 const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
 const urls = require("../utils/links");
 const garbage = require("../utils/garbage");
+const e = require("express");
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-const model = new ChatOpenAI({ temperature: 0 });
+const model = new ChatOpenAI({ temperature: 0, openAIApiKey: OPENAI_API_KEY });
 const embeddings = new OpenAIEmbeddings({
   openAIApiKey: OPENAI_API_KEY,
 });
@@ -15,38 +16,48 @@ const webBrowser = new WebBrowser({ model, embeddings });
 const recscraper = async (req, res) => {
   let processed_urls = new Set();
   let unProcessed_urls = new Set();
-  let processed_urls_count = 0;
-  let emails = new Set();
-  let emailsArray = [];
+  let emailsArray = new Set();
 
   const takeLink = async (url) => {
     console.log("startng for " + url);
     let website = url;
     unProcessed_urls.add(website);
-    let { hostname } = new URL(website);
-    let base_url = hostname;
-    let garbage_extensions = garbage;
     email_count = 0;
     await crawl();
+    console.log("done for " + url);
+    console.log("emails found: " + emailsArray.size);
+    return emailsArray;
   };
 
   const crawl = async () => {
-    console.log(unProcessed_urls);
-    console.log(processed_urls);
-    let url = unProcessed_urls.values().next().value;
-    unProcessed_urls.delete(url);
-    console.log("crawl for " + url);
-    await parse_url(url);
+    console.log(processed_urls.size);
+    console.log(emailsArray.size);
+    unProcessed_urls = new Set(
+      [...unProcessed_urls].filter(
+        (url) =>
+          !processed_urls.has(url) &&
+          !/\b(services?|blogs?|news|articles?|guides?|settings?)\b/i.test(
+            url
+          ) &&
+          !/(news|#)/i.test(url)
+      )
+    );
+
+    console.log(unProcessed_urls, "after check");
+    const promises = Array.from(unProcessed_urls).map(async (url) => {
+      const result = await parse_url(url);
+      return result;
+    });
+    const results = await Promise.all(promises);
+    for (let urls of results) {
+      urls.forEach((url) => unProcessed_urls.add(url));
+    }
 
     if (unProcessed_urls.size > 0) {
-      console.log(emailsArray);
-      console.log(Array.from(unProcessed_urls).length);
       await crawl();
     } else {
       console.log("done");
-      console.log(emailsArray);
-      res.json(emailsArray);
-      return;
+      return new Set(emailsArray);
     }
   };
 
@@ -69,11 +80,11 @@ const recscraper = async (req, res) => {
     const regex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
     const match = content.match(regex);
     const sanitizedEmail = match ? match : [];
-    let urls = contactUrls.filter((url) => {
-      const { hostname } = new URL(url);
-      return hostname === base_url;
-    });
-    urls = Array.from(new Set(urls));
+    const urls = (contactUrls ?? []).filter(
+      (url) =>
+        new URL(url).hostname === base_url &&
+        !garbage.some((ext) => url.endsWith(ext) || url.endsWith(`${ext}/`))
+    );
     let parsed_url = [];
     for (let url of urls) {
       let skip = false;
@@ -89,36 +100,43 @@ const recscraper = async (req, res) => {
         parsed_url.push(url);
       }
     }
-    // console.log("hiii");
     processed_urls.add(url);
+
     for (let url of parsed_url) {
-        // console.log(processed_urls, "inside for loop")
-        // console.log(url, "inside for loop")
-        // console.log(processed_urls.has(url), "inside for loop")
-      if (!processed_urls.has(url) && !/\b(services?|blogs?)\b/.test(url)) {
-        // console.log("adding " + url + " to unprocessed_urls");
+      if (
+        !processed_urls.has(url) &&
+        !/\b(services?|blogs?|news|articles?|guides?|settings?)\b/i.test(url) &&
+        !/(news|#)/i.test(url)
+      ) {
         unProcessed_urls.add(url);
       } else {
-        // console.log("already processed " + url);
+        parsed_url = parsed_url.filter((item) => item !== url);
       }
     }
 
-    await parse_emails(Array.from(new Set(sanitizedEmail)));
+    parse_emails(Array.from(new Set(sanitizedEmail)), base_url);
+    return parsed_url;
   };
 
-  const parse_emails = async (emails) => {
-    for (let email of emails) {
-      if (!emailsArray.includes(email)) {
-        emailsArray.push(email);
+  const parse_emails = (emails, base_url) => {
+    emails.forEach((email) => {
+      const formattedEmail = `${base_url} : ${email}`;
+      if (!emailsArray.has(formattedEmail)) {
+        emailsArray.add(formattedEmail);
       }
-    }
-    console.log(emailsArray);
+    });
   };
-  console.time("start")
-  await takeLink(urls[0]);
-    console.timeEnd("start")
-  //   console.log(emailsArray);
-  //   res.json("done");
+  console.time("start");
+  const linkPromises = urls.map(async (url) => {
+    const result = await takeLink(url);
+    return result;
+  });
+  console.log(linkPromises);
+  const newEmailsArray = await Promise.all(linkPromises);
+  console.log(newEmailsArray[0]);
+  const answer = [...newEmailsArray[0]];
+  console.timeEnd("start");
+  res.json(answer);
 };
 
 module.exports = recscraper;

@@ -24,13 +24,15 @@ try{
   const docSearch = await PineconeStore.fromExistingIndex(embeddings, {
     pineconeIndex,
   });
-  const query = req.body.query || "Why was Donald Trump arrested ?";
+  const query = req.body.query || "write me a 500 words blog post about ServiceNow in a particular blog format according to modern SEO practices followed by Canva, Figma, Hubspot, and other SaaS companies";
 
-  const searchResults = await docSearch.similaritySearch(query, 5);
+  const searchResults = await docSearch.similaritySearch(query, 10);
 
   const llm = new OpenAI({
     temperature: 0.7,
     openAIApiKey: OPENAI_API_KEY,
+    maxTokens: 1500,
+    modelName: "text-davinci-003",
   });
 
   const chain = loadQAStuffChain(llm);
