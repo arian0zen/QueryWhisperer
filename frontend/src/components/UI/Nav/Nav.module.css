@@ -6,40 +6,76 @@
   margin: 0 auto;
   padding: 0rem 1rem;
   border-radius: 10px;
-  background-color: var(--primary-color);
 }
 
-.nav-bar-logo img {
-  width: 80px;
-  height: 80px;
+.nav-bar-logo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.gradient-span {
+  background: linear-gradient(to right, #8A2BE2, #C71585);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-bar-links {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
 }
 
-.nav-bar-links div {
-  font-family: var(--modern);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--dark-color);
+.buttons {
+  background-color: transparent;
   padding: 0.5rem 1rem;
-  background-color: var(--call-to-action);
-  border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  border: 1px solid rgb(63, 63, 63);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.buttons:hover {
+  scale: 1.1;
+}
+.dark-mode-toggle {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem;
+  border: 1px solid black;
+  background-color: rgb(187, 187, 187);
+  width: 40px;
+  border-radius: 50px;
+  height: 25px;
+}
+.active {
+  position: absolute;
+  left: 100%;
 }
 
-.nav-bar-links div:hover {
- color: var(--primary-color);
- box-shadow: 0px 0px 5px 3px rgba(110, 108, 108, 0.575);
- transform: scale(1.1);
- transition: all 0.3s ease-in-out;
+.toggle-btn {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 1px;
+  border-radius: 50px;
+  background-color: black;
+  transition: left 0.3s ease-in-out; /* Update the transition property */
 }
 
+.dark-mode-toggle.dark .toggle-btn {
+  left: 100%;
+}
+
+.nav-bar-links a{
+  text-decoration: none;
+  color: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+}
 @media screen and (max-width: 768px) {
 
   .nav-bar-logo img{
@@ -48,8 +84,17 @@
     padding: 0;
   }
   .nav-bar{
-    padding: 1rem;
-    width: 95%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+  .texts{
+    min-width: 95%;
+  }
+  .nav-bar-links{
+    display: flex;
+    max-width: 100%;
+    gap: 0.5rem;
   }
   .nav-bar-links div{
     font-size: 0.8rem;

@@ -1,25 +1,26 @@
 import React from "react";
 import classes from "./HeroSection.module.css";
-import heroImage from "../../assets/hero-png.png";;
+import heroImage from "../../assets/bot.png";;
 const HeroSectionComponent = (props) => {
   return (
         <div className={classes.hero} id={props.id}>
+          <div className={classes["hero-container"]}>
+          <div className={classes.texts}>
+              <h1>
+                Join the AI revelution with Query<span className={classes["gradient-span"]}>Whisperer</span>
+              </h1>
+              <p>
+                Discover the smarter way to explore Youtube videos with our advance transcription technology. You can teach and learn from your own bot and get instant answer to your video queries. Plus we are always working on new updates and features to make your video exploration even better. Stay tuned!
+              </p>
+              <button className={classes.buttons}>Try Now</button>
+          </div>
+          <div className={classes["image-container"]}>
+          <img src={heroImage} alt="" />
 
-          <div className={classes["hero-content"]}>
-            <div className={classes["content-text"]}>
-              Teach the bot and <br />
-              <span>let it teach you !!</span>
-            </div>
-            <div className={classes["content-desc"]}>
-            Unleash the power of AI with QueryWhisperer! Get instant answers to your questions about YouTube videos. Our advanced technology generates transcripts from video audio, enabling you to easily extract valuable insights. <span>Try QueryWhisperer today</span> and elevate your video exploration to a whole new level!
-            </div>
-            <a href="#qna-section">
-              <div className={classes["content-button"]}>try it now..</div>
-            </a>
           </div>
-          <div className={classes["hero-image"]}>
-            <img src={heroImage} alt="hero" />
+
           </div>
+          
         </div>
   );
 };
