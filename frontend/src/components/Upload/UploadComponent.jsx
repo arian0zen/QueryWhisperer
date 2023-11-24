@@ -26,7 +26,8 @@ const UploadComponent = (props) => {
     const enteredLink = linkRef.current.value;
     if (
       enteredLink.trim().length === 0 ||
-      (!enteredLink.includes("youtube.com") && !enteredLink.includes("youtu.be"))
+      (!enteredLink.includes("youtube.com") &&
+        !enteredLink.includes("youtu.be"))
     ) {
       setError("Please enter a valid YouTube URL");
       return;
@@ -36,24 +37,36 @@ const UploadComponent = (props) => {
       setError(null);
       setSuccess(null);
       // Set the origin header to your server's domain
-      const axiosConfig = {
-        headers: {
-          'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
-        }
-      };
+      // const axiosConfig = {
+      //   headers: {
+      //     'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
+      //   }
+      // };
+      // const response = await axios.post(
+      //   "https://transcript-generator-api.onrender.com/api/transcript",
+      //   {
+      //     url: enteredLink,
+      //   },
+      //   axiosConfig
+      // );
       const response = await axios.post(
-        "https://transcript-generator-api.onrender.com/api/transcript",
+        "http://localhost:5000/api/transcript",
         {
           url: enteredLink,
-        },
-        axiosConfig
+        }
+        // axiosConfig
       );
       setLoading(false);
       if (response.data.error) {
-        if(response.data.error === `The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined`){
-            setError("Ohh hoo! Probably my OpenAI trial is over, hey! would you sponsor me ? 🥺")
-            setSuccess(null);
-            return;
+        if (
+          response.data.error ===
+          `The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined`
+        ) {
+          setError(
+            "Ohh hoo! Probably my OpenAI trial is over, hey! would you sponsor me ? 🥺"
+          );
+          setSuccess(null);
+          return;
         }
         setError(response.data.error);
         setSuccess(null);
@@ -98,7 +111,11 @@ const UploadComponent = (props) => {
         {Error && <p className={classes["error-message"]}>{Error}</p>}
         {Loading && (
           <div className={classes["loading-message"]}>
-            <img className={classes["loading"]} src={loadingGif} alt="loading" />
+            <img
+              className={classes["loading"]}
+              src={loadingGif}
+              alt="loading"
+            />
             Loading... Please wait, this may take a while
           </div>
         )}
