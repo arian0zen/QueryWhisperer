@@ -39,7 +39,7 @@ const openAiWhisper = async (url, mp3File, headerText) => {
     });
     return { resp: transcriptText, createdMongoId: createdMongoInstance._id };
   } catch (err) {
-    console.log("Error creating transcription: ", err);
+    console.log("Error creating transcription: ", err.message);
     return err;
   }
 };
