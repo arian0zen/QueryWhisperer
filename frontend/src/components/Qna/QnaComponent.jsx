@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "../UI/Card/Card";
 import classes from "./QnaComponent.module.css";
 import GoHomeButton from "../UI/Buttons/GoHome";
+import RecommendedComponent from "../Recommended/Recommended";
 import typingRed from "../../assets/typing-red.gif";
 import loadingGif from "../../assets/loading-crop.gif";
 
@@ -119,6 +120,7 @@ const QnaComponent = (props) => {
       <div className={classes["go-back-btn"]}>
         <GoHomeButton onClick={props.onGoBack}></GoHomeButton>
       </div>
+        
     </Card>
   );
 };

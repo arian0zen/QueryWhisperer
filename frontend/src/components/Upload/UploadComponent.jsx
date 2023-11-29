@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Card from "../UI/Card/Card";
+import RecommendedComponent from "../Recommended/Recommended";
 import classes from "./UploadComponent.module.css";
 import GoHomeButton from "../UI/Buttons/GoHome";
 import loadingGif from "../../assets/loading-crop.gif";
@@ -9,6 +10,7 @@ const UploadComponent = (props) => {
   const [Error, setError] = useState(null);
   const [Loading, setLoading] = useState(null);
   const [Success, setSuccess] = useState(null);
+  const [clickedVideo, setClickedVideo] = useState(""); // [TODO
   const linkRef = useRef("");
 
   const formInputClass = Error ? classes["form-error"] : "";
@@ -22,7 +24,7 @@ const UploadComponent = (props) => {
   };
 
   const submitHandler = async (event) => {
-    event.preventDefault();
+    event?.preventDefault();
     const enteredLink = linkRef.current.value;
     if (
       enteredLink.trim().length === 0 ||
@@ -82,6 +84,14 @@ const UploadComponent = (props) => {
       return;
     }
   };
+
+  const demoVideoClickHandler = async(videoUrl) => {
+    linkRef.current.value = videoUrl;
+    setError(null);
+    setSuccess(null);
+    await submitHandler();
+  }
+
   return (
     <Card>
       <div className={classes["upload-component"]}>
@@ -97,6 +107,7 @@ const UploadComponent = (props) => {
             onSubmit={submitHandler}
           >
             <input
+            class='w-full'
               onChange={inputChangeHandler}
               ref={linkRef}
               className={formInputClass}
@@ -124,6 +135,7 @@ const UploadComponent = (props) => {
       <div className={classes["go-back-btn"]}>
         <GoHomeButton onClick={props.onGoBack}></GoHomeButton>
       </div>
+      <RecommendedComponent demoVideoClickHandler={demoVideoClickHandler}></RecommendedComponent>
     </Card>
   );
 };

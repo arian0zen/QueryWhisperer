@@ -27,6 +27,7 @@
     "mongoose": "^7.0.3",
     "node-fetch": "^2.6.9",
     "openai": "^3.2.1",
-    "ytdl-core": "^4.11.5"
+    "ytdl-core": "^4.11.5",
+    "ytsr": "^3.8.4"
   }
 }
