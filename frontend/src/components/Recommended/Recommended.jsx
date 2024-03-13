@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DemoCard from "../UI/DemoVideoCard/DemoCard";
 
-const RecommendedComponent = ({demoVideoClickHandler}) => {
+const RecommendedComponent = ({ demoVideoClickHandler }) => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedTag, setSelectedTag] = useState("programming in 100 seconds");
@@ -12,9 +12,12 @@ const RecommendedComponent = ({demoVideoClickHandler}) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.post("http://localhost:5000/api/ytvideos", {
-          query: selectedTag,
-        });
+        const response = await axios.post(
+          "http://localhost:5000/api/ytvideos",
+          {
+            query: selectedTag,
+          }
+        );
         let videos = response.data;
         setVideos(videos);
       } catch (error) {
@@ -26,6 +29,8 @@ const RecommendedComponent = ({demoVideoClickHandler}) => {
 
     fetchData();
   }, [selectedTag]);
+
+  console.log("videos", videos);
 
   const getVideos = async (tag) => {
     try {
@@ -79,11 +84,16 @@ const RecommendedComponent = ({demoVideoClickHandler}) => {
         <p className="text-center text-gray-500">Loading...</p>
       ) : (
         <div className="flex flex-wrap gap-4 mt-8">
-          {videos.map((video) => (
-            <DemoCard onClick={()=>{
-                console.log("clicked")
-                demoVideoClickHandler(video.url)
-            }} key={video.videoId} title={video.title} thumbnail={video.thumbnail} />
+          {videos?.map((video) => (
+            <DemoCard
+              onClick={() => {
+                console.log("clicked");
+                demoVideoClickHandler(video.url);
+              }}
+              key={video.videoId}
+              title={video.title}
+              thumbnail={video.thumbnail}
+            />
           ))}
         </div>
       )}
