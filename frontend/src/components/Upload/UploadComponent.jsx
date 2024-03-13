@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Card from "../UI/Card/Card";
+import RecommendedComponent from "../Recommended/Recommended";
 import classes from "./UploadComponent.module.css";
 import GoHomeButton from "../UI/Buttons/GoHome";
 import loadingGif from "../../assets/loading-crop.gif";
@@ -9,6 +10,7 @@ const UploadComponent = (props) => {
   const [Error, setError] = useState(null);
   const [Loading, setLoading] = useState(null);
   const [Success, setSuccess] = useState(null);
+  const [clickedVideo, setClickedVideo] = useState(""); // [TODO
   const linkRef = useRef("");
 
   const formInputClass = Error ? classes["form-error"] : "";
@@ -22,11 +24,12 @@ const UploadComponent = (props) => {
   };
 
   const submitHandler = async (event) => {
-    event.preventDefault();
+    event?.preventDefault();
     const enteredLink = linkRef.current.value;
     if (
       enteredLink.trim().length === 0 ||
-      (!enteredLink.includes("youtube.com") && !enteredLink.includes("youtu.be"))
+      (!enteredLink.includes("youtube.com") &&
+        !enteredLink.includes("youtu.be"))
     ) {
       setError("Please enter a valid YouTube URL");
       return;
@@ -36,24 +39,36 @@ const UploadComponent = (props) => {
       setError(null);
       setSuccess(null);
       // Set the origin header to your server's domain
-      const axiosConfig = {
-        headers: {
-          'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
-        }
-      };
+      // const axiosConfig = {
+      //   headers: {
+      //     'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
+      //   }
+      // };
+      // const response = await axios.post(
+      //   "https://transcript-generator-api.onrender.com/api/transcript",
+      //   {
+      //     url: enteredLink,
+      //   },
+      //   axiosConfig
+      // );
       const response = await axios.post(
-        "https://transcript-generator-api.onrender.com/api/transcript",
+        "http://localhost:5000/api/transcript",
         {
           url: enteredLink,
-        },
-        axiosConfig
+        }
+        // axiosConfig
       );
       setLoading(false);
       if (response.data.error) {
-        if(response.data.error === `The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined`){
-            setError("Ohh hoo! Probably my OpenAI trial is over, hey! would you sponsor me ? 🥺")
-            setSuccess(null);
-            return;
+        if (
+          response.data.error ===
+          `The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined`
+        ) {
+          setError(
+            "Ohh hoo! Probably my OpenAI trial is over, hey! would you sponsor me ? 🥺"
+          );
+          setSuccess(null);
+          return;
         }
         setError(response.data.error);
         setSuccess(null);
@@ -69,6 +84,14 @@ const UploadComponent = (props) => {
       return;
     }
   };
+
+  const demoVideoClickHandler = async(videoUrl) => {
+    linkRef.current.value = videoUrl;
+    setError(null);
+    setSuccess(null);
+    await submitHandler();
+  }
+
   return (
     <Card>
       <div className={classes["upload-component"]}>
@@ -84,6 +107,7 @@ const UploadComponent = (props) => {
             onSubmit={submitHandler}
           >
             <input
+            class='w-full'
               onChange={inputChangeHandler}
               ref={linkRef}
               className={formInputClass}
@@ -98,7 +122,11 @@ const UploadComponent = (props) => {
         {Error && <p className={classes["error-message"]}>{Error}</p>}
         {Loading && (
           <div className={classes["loading-message"]}>
-            <img className={classes["loading"]} src={loadingGif} alt="loading" />
+            <img
+              className={classes["loading"]}
+              src={loadingGif}
+              alt="loading"
+            />
             Loading... Please wait, this may take a while
           </div>
         )}
@@ -107,6 +135,7 @@ const UploadComponent = (props) => {
       <div className={classes["go-back-btn"]}>
         <GoHomeButton onClick={props.onGoBack}></GoHomeButton>
       </div>
+      <RecommendedComponent demoVideoClickHandler={demoVideoClickHandler}></RecommendedComponent>
     </Card>
   );
 };

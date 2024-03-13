@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "../UI/Card/Card";
 import classes from "./QnaComponent.module.css";
 import GoHomeButton from "../UI/Buttons/GoHome";
+import RecommendedComponent from "../Recommended/Recommended";
 import typingRed from "../../assets/typing-red.gif";
 import loadingGif from "../../assets/loading-crop.gif";
 
@@ -28,16 +29,24 @@ const QnaComponent = (props) => {
       setLoading(true);
       setAnswer(null);
       setError(null);
-      const axiosConfig = {
-        headers: {
-          'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
-        }
-      };
+      // const axiosConfig = {
+      //   headers: {
+      //     'origin': 'https://transcript-generation-ft-ai-react.vercel.app',
+      //   }
+      // };
       // Set the origin header to your server's domain
-      const response = await axios.post("https://transcript-generator-api.onrender.com/api/qna", {
-        query: question,
-      },
-      axiosConfig
+      // const response = await axios.post("https://transcript-generator-api.onrender.com/api/qna", {
+      //   query: question,
+      // },
+      // // axiosConfig
+      // );
+
+      const response = await axios.post(
+        "http://localhost:5000/api/qna",
+        {
+          query: question,
+        }
+        // axiosConfig
       );
       setLoading(false);
       if (response.data.error) {
@@ -99,7 +108,11 @@ const QnaComponent = (props) => {
         {Error && <p className={classes["error-message"]}>{Error}</p>}
         {Loading && (
           <div className={classes["loading-message"]}>
-            <img className={classes["loading"]} src={loadingGif} alt="loading" />
+            <img
+              className={classes["loading"]}
+              src={loadingGif}
+              alt="loading"
+            />
             Loading... Please wait, this may take a while
           </div>
         )}
@@ -107,6 +120,7 @@ const QnaComponent = (props) => {
       <div className={classes["go-back-btn"]}>
         <GoHomeButton onClick={props.onGoBack}></GoHomeButton>
       </div>
+        
     </Card>
   );
 };
