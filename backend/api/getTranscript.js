@@ -25,7 +25,6 @@ const getTranscriptResponse = async (url, mp3) => {
       await fileCreationPromise;
 
       const transcriptText = await openAiWhisper(url, mp3, headerText);
-      console.log("transcriptText", transcriptText)
       if(transcriptText.error){
         return { success: false,  newFileCreated: false, error: transcriptText.error };
       }

@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Cookie&family=Exo&family=Gothic+A1:wght@300;400&family=Libre+Baskerville:wght@400;700&family=Pacifico&display=swap');
 :root {
   /* Fonts */
