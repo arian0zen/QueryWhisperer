@@ -41,7 +41,6 @@ __tests__/
 *.config.json
 
 # Compiled code
-*.js
 *.js.map
 *.d.ts
 
